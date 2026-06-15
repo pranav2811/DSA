@@ -16,6 +16,12 @@ public class BasicMath{
         return counter;
     }
 
+    static int fibonacci(int n){
+        if(n <= 1) return 1;
+
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+
     static int reverseNumber(int n){
 
         int newNum = 0;
@@ -189,6 +195,7 @@ public class BasicMath{
         printDivisors(48);
         System.out.println("Is 48 a prime number: " + checkPrime(48));
         System.out.println("Is 7 a prime number: " + checkPrime(7));
+        System.out.println("Fibonacci of 5 is"+ fibonacci(5));
         
 
 

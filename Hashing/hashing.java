@@ -75,6 +75,7 @@ public class hashing{
         index = key;
     }
     System.out.println("OCCURRENCE OF " + key + " = " + value);
+    sc.close();
 }
 
         
