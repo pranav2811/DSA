@@ -1,5 +1,7 @@
 package Sorting;
 
+import java.util.ArrayList;
+
 public class Main{
 
     static void printArr(int[] arr){
@@ -11,7 +13,7 @@ public class Main{
 
 
 
-    static int[] insertionSort(int[] arr){
+    static void insertionSort(int[] arr){//time complexity is O(n^2 - average and worst casae - best case is O(n))
         int  n = arr.length;
 
         for (int i = 1; i < n;i++){
@@ -27,11 +29,53 @@ public class Main{
             arr[j+1] = element;
         }
 
-        return arr;
-
-
     }
 
+
+    static int[] mergeSort(int[] arr, int p, int q){
+
+        if(p>=q) return arr;
+
+        int mid = (p+q)/2;
+        mergeSort(arr,p,mid);
+        mergeSort(arr,mid+1,q);
+        return merge(arr, p, mid, q);
+    }
+
+
+    static int[] merge(int[] arr, int p, int mid, int r){
+
+        ArrayList<Integer> mergedList = new ArrayList<>();
+        int left = p;
+        int right = mid + 1;
+
+
+        while(left <= mid && right <= r){
+            if(arr[left] <=arr[right]){
+                mergedList.add(arr[left]);
+                left++;
+            }
+            else{
+                mergedList.add(arr[right]);
+                right++;
+            }
+        }
+
+        while(left <= mid){
+            mergedList.add(arr[left]);
+            left++;
+        }
+        while(right <= r){
+            mergedList.add(arr[right]);
+            right++;
+        }
+
+        for(int i = p; i <= r; i++){
+            arr[i] = mergedList.get(i-p);
+        }
+
+        return arr;
+    }  
 
 
 
@@ -39,8 +83,12 @@ public class Main{
 
 
         int[] arr = {1,4,3,5,2};
-        insertionSort(arr);
+        mergeSort(arr,0,arr.length-1);
         printArr(arr);
+
+        int[] arr1 = {23,14,22,53,34};
+        insertionSort(arr1);
+        printArr(arr1);
 
     }
 }
