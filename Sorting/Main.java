@@ -32,7 +32,7 @@ public class Main{
     }
 
 
-    static int[] mergeSort(int[] arr, int p, int q){
+    static int[] mergeSort(int[] arr, int p, int q){//time complexity is o(nlogn)
 
         if(p>=q) return arr;
 
